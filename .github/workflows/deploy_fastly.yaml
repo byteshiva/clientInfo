@@ -11,6 +11,12 @@ jobs:
 
     - name: Install project dependencies
       run: npm install
+      
+    - name: Build Compute@Edge Package
+      uses: fastly/compute-actions/build@main
+      with:
+        verbose: true # optionally enables verbose output, defaults to false
+        skip_verification: true # optional, defaults to false
 
     - name: Deploy to Compute@Edge
       uses: fastly/compute-actions@main
