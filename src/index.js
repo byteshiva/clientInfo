@@ -13,6 +13,7 @@ addEventListener("fetch", (event) => event.respondWith(handleRequest(event)));
 async function handleRequest(event) {
   // Get the client request.
   let req = event.request;
+  let clientGeo = event.client.geo;
 
   // Filter requests that have unexpected methods.
   if (!["HEAD", "GET"].includes(req.method)) {
@@ -20,7 +21,7 @@ async function handleRequest(event) {
       status: 405,
     });
   }
-
+  
   let url = new URL(req.url);
 
   // If request is to the `/` path...
@@ -59,6 +60,58 @@ async function handleRequest(event) {
       status: 200,
       headers: new Headers({ "Content-Type": "text/html; charset=utf-8" }),
     });
+  }
+
+  // If request is to the `/geo` path...
+  if (url.pathname == "/geo") {
+    let respBody = JSON.stringify({
+      as: {
+        name: clientGeo.as_name,
+        number: clientGeo.as_number,
+      },
+      geo: {
+        city: clientGeo.city,
+        country_code: clientGeo.country_code,
+        country_name: clientGeo.country_name,
+        gmt_offset: clientGeo.gmt_offset,
+      },
+    });
+
+    // Below are some common patterns for Compute@Edge services using JavaScript.
+    // Head to https://developer.fastly.com/learning/compute/javascript/ to discover more.
+
+    // Create a new request.
+    // let bereq = new Request("http://example.com");
+
+    // Add request headers.
+    // req.headers.set("X-Custom-Header", "Welcome to Compute@Edge!");
+    // req.headers.set(
+    //   "X-Another-Custom-Header",
+    //   "Recommended reading: https://developer.fastly.com/learning/compute"
+    // );
+
+    // Create a cache override.
+    // let cacheOverride = new CacheOverride("override", { ttl: 60 });
+
+    // Forward the request to a backend.
+    // let beresp = await fetch(req, {
+    //   backend: "backend_name",
+    //   cacheOverride,
+    // });
+
+    // Remove response headers.
+    // beresp.headers.delete("X-Another-Custom-Header");
+
+    // Log to a Fastly endpoint.
+    // const logger = fastly.getLogger("my_endpoint");
+    // logger.log("Hello from the edge!");
+
+    // Send a default synthetic response.
+  return new Response(respBody, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
   }
 
   // Catch all other requests and return a 404.
