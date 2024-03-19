@@ -12,7 +12,7 @@
         "@fastly/js-compute": "^0.2.1"
       },
       "devDependencies": {
-        "core-js": "3.22.7",
+        "core-js": "3.36.1",
         "webpack": "5.72.1",
         "webpack-cli": "4.9.2"
       },
@@ -390,9 +390,9 @@
       "dev": true
     },
     "node_modules/core-js": {
-      "version": "3.22.7",
-      "resolved": "https://registry.npmjs.org/core-js/-/core-js-3.22.7.tgz",
-      "integrity": "sha512-Jt8SReuDKVNZnZEzyEQT5eK6T2RRCXkfTq7Lo09kpm+fHjgGewSbNjV+Wt4yZMhPDdzz2x1ulI5z/w4nxpBseg==",
+      "version": "3.36.1",
+      "resolved": "https://registry.npmjs.org/core-js/-/core-js-3.36.1.tgz",
+      "integrity": "sha512-BTvUrwxVBezj5SZ3f10ImnX2oRByMxql3EimVqMysepbC9EeMUOpLwdy6Eoili2x6E4kf+ZUB5k/+Jv55alPfA==",
       "dev": true,
       "hasInstallScript": true,
       "funding": {
@@ -1684,9 +1684,9 @@
       "dev": true
     },
     "core-js": {
-      "version": "3.22.7",
-      "resolved": "https://registry.npmjs.org/core-js/-/core-js-3.22.7.tgz",
-      "integrity": "sha512-Jt8SReuDKVNZnZEzyEQT5eK6T2RRCXkfTq7Lo09kpm+fHjgGewSbNjV+Wt4yZMhPDdzz2x1ulI5z/w4nxpBseg==",
+      "version": "3.36.1",
+      "resolved": "https://registry.npmjs.org/core-js/-/core-js-3.36.1.tgz",
+      "integrity": "sha512-BTvUrwxVBezj5SZ3f10ImnX2oRByMxql3EimVqMysepbC9EeMUOpLwdy6Eoili2x6E4kf+ZUB5k/+Jv55alPfA==",
       "dev": true
     },
     "cross-spawn": {
